@@ -1,21 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Cards!</title>
-		<link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
-		<meta charset="utf-8" /> 
-	</head>
-	
-	<body>
-		<script src="script.js"></script>
+  <head>
+    <!-- Title -->
+    <title>Blackjack!</title>
+    <link
+      rel="stylesheet"
+      href="/style.css"
+      type="text/css"
+      media="screen"
+      title="no title"
+      charset="utf-8"
+    />
+    <meta charset="utf-8" />
+  </head>
 
-		<div class="start">
-		 		<label for="startValues">Start Values:</label> <input type="text" name="startValues" id="startValues">  
-		 		<input class="playBtn" type="submit" value="Play">  
-		</div>
-		<div class="game">
-		</div>
+  <body>
+    <script src="script.js"></script>
 
+    <div id="tracker" class="buttonbox">
+      <!-- Creates table for wins/draws/losses. Each span pulls in the value from the javascript-->
+      <p>
+        Wins: <span id="wins"></span> Draws:<span id="draws"></span>
+        Losses:<span id="losses"></span>
+      </p>
+      <!-- Creates the bank value tracker. -->
+      <div id="bank">Bank Value:<span id="bankValue"></span></div>
+      <div>
+        <!-- A span that generates the restart message when the player runs out of money -->
+        <span id="youLose"></span>
+      </div>
     </div>
-	</body>
+    <h1>Let's Play Blackjack!</h1>
+    <br />
+    <div class="start">
+      <!-- The form where the player inputs their bet value and then clicks to start the game -->
+      <form action="">
+        <label for="startValues">Bet Value:</label>
+        <input type="number" name="startValues" id="startValues" />
+        <input class="playBtn" type="submit" value="Play" />
+      </form>
+    </div>
+    <div class="game"></div>
+
+    <!-- Our suggested strategy box generates a recommended action based upon the player card values -->
+    <div2 class="strategy">Suggested Action:<span id="strategy"></span></div2>
+  </body>
 </html>

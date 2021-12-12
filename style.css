@@ -1,112 +1,162 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
-
+@import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
+/* Import fonts */
+@font-face {
+  font-family: DotMatrix;
+  src: url("https://cdn.glitch.me/4f9261b7-0055-4326-a688-34f54beaa7ea%2FDOTMATRI.TTF?v=1638379388160")
+    format("opentype");
+}
 
 body {
-	text-align: center;
-	font-family: 'Barlow Condensed', sans-serif;
-	background-image: url('https://cdn.glitch.com/e169fef2-a9b5-474b-b607-c3b63db1a4d9%2Fbg.jpg?1516905219116');
-	background-size: contain;
+  text-align: center;
+  font-family: "Barlow Condensed", sans-serif;
+  background-image: url("https://cdn.glitch.com/e169fef2-a9b5-474b-b607-c3b63db1a4d9%2Fbg.jpg?1516905219116");
+  background-size: contain;
+}
+h1 {
+  color: white;
+  font-size: 50px;
 }
 
 .start {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	background: white;
-	padding: 7px 15px 7px 15px;
-	box-shadow: 1px 1px 2px #888888;
-	border-radius: 2px;
-	-webkit-transform: translate(-50%,-50%);
-	   -moz-transform: translate(-50%,-50%);
-		 -o-transform: translate(-50%,-50%);
-			transform: translate(-50%,-50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white;
+  font-family: dotmatrix;
+  padding: 7px 15px 7px 15px;
+  box-shadow: 1px 1px 2px #888888;
+  border-radius: 2px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .game {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%,-50%);
-	   -moz-transform: translate(-50%,-50%);
-		 -o-transform: translate(-50%,-50%);
-			transform: translate(-50%,-50%);
-	
+  position: absolute;
+  padding-top: 450px;
+  padding-bottom: 100px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-family: dotmatrix;
 }
 
 .hiddenCard {
-	vertical-align: top;
-	width: 90px;
-	height: 140px;
-	display: inline-block;
-	border-radius: 5px;
-	margin: 2px;
-	box-shadow: 1px 1px 2px #888888;
-	justify-content: center;
-	overflow: hidden;
+  vertical-align: top;
+  width: 90px;
+  height: 140px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 2px;
+  box-shadow: 1px 1px 2px #888888;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .hiddenCard img {
-	display: inline-block;
-	flex-shrink: 0;
-	max-width: 100%;
-	min-width: 100%;
-	min-height: 100%;
-	max-height: 100%;
+  display: inline-block;
+  flex-shrink: 0;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .card {
-	vertical-align: top;
-	width: 90px;
-	height: 140px;
-	display: inline-block;
-	margin: 2px;
-	border-radius: 5px;
-	background: white;
-	box-shadow: 1px 1px 2px #888888;
+  vertical-align: top;
+  width: 90px;
+  height: 140px;
+  display: inline-block;
+  margin: 2px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 1px 1px 2px #888888;
 }
 
 .left {
-	text-align: left;
-	display: inline-block;
-	padding-right: 60px;
+  text-align: left;
+  display: inline-block;
+  padding-right: 60px;
 }
 .right {
-	text-align: right;
-	display: inline-block;
-	padding-top: 95px;
-	padding-left: 60px;
-
+  text-align: right;
+  display: inline-block;
+  padding-top: 95px;
+  padding-left: 60px;
 }
 
-.playerTotal, .pcTotal {
-	padding: 5px 10px 5px 10px;
-	border-radius: 2px;
-	display: inline-block;
-	background: white;
-	box-shadow: 1px 1px 2px #888888;
-	margin-bottom: 20px;
+.playerTotal,
+.pcTotal {
+  padding: 5px 10px 5px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  background: white;
+  box-shadow: 1px 1px 2px #888888;
+  margin-bottom: 20px;
+  font-family: dotmatrix;
 }
 
-
-.hit, .stand , .banner, .reset {
-	padding: 5px 10px 5px 10px;
-	border-radius: 2px;
-	display: inline-block;
-	background: white;
-	box-shadow: 1px 1px 2px #888888;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-	margin-top: 15%;
-	margin-right: 5%;
+.hit,
+.stand,
+.banner,
+.reset {
+  padding: 5px 10px 5px 10px;
+  border-radius: 2px;
+  display: inline-block;
+  background: white;
+  box-shadow: 1px 1px 2px #888888;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15%;
+  margin-right: 5%;
+  font-family: dotmatrix;
+}
+#tracker {
+  border-top: 3px solid black;
+  border-bottom: 2px solid black;
 }
 
 .banner {
-	display: block;
-	margin-bottom: 0px;
+  display: block;
+  margin-bottom: 0px;
 }
 
-.pc, .player {
-	margin-top: 40px;
+.pc,
+.player {
+  margin-top: 40px;
 }
+#tracker {
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  color: white;
+}
+div.buttonbox {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 8px 8px 8px 8px;
+}
+
+div2 {
+  width: 40%;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+#strategy {
+  text-align: center;
+}
+
+tips {
+  font-family: dotmatrix;
+}
+

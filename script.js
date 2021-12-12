@@ -1,15 +1,18 @@
+//set up the counts for player and dealer (pc)
 let deck;
 let pcTotal = 0;
 let playerTotal = 0;
 let pcCards = [];
 let playerCards = [];
 
+//function to draw a random card
 function drawCard() {
   const card = deck[0];
   deck.splice(0, 1);
   return card;
 }
 
+//establishing counting rules
 function calculateTotal(list) {
   let aces = 0;
   let total = 0;
@@ -23,10 +26,10 @@ function calculateTotal(list) {
   if (aces > 0 && total + 10 <= 21) {
     total += 10;
   }
-
   return total;
 }
 
+//displaying the hidden dealer card and adding that value to the dealer count
 function displayHiddenCard(card) {
   const spanLeft = document.createElement("span");
   spanLeft.className = "left";
@@ -39,7 +42,8 @@ function displayHiddenCard(card) {
   spanRight.style.display = "none";
 
   const img = document.createElement("img");
-  img.src ="https://cdn.glitch.com/e169fef2-a9b5-474b-b607-c3b63db1a4d9%2Fcard.jpg?1516905219264";
+  img.src =
+    "https://cdn.glitch.com/e169fef2-a9b5-474b-b607-c3b63db1a4d9%2Fcard.jpg?1516905219264";
 
   const newCard = document.createElement("div");
   newCard.className = "hiddenCard";
@@ -58,6 +62,7 @@ function getColor(suit) {
   }
 }
 
+//displaying and adding the value of a new card for either player or dealer
 function displayNewCard(card, mode) {
   const spanLeft = document.createElement("span");
   spanLeft.className = "left";
@@ -80,7 +85,7 @@ function displayNewCard(card, mode) {
     document.querySelector(".playerCards").appendChild(newCard);
   }
 }
-
+//adding cards to pc total
 function reverseCard() {
   const hiddenCard = document.querySelector(".hiddenCard");
   const children = hiddenCard.childNodes;
@@ -92,7 +97,7 @@ function reverseCard() {
   document.querySelector(".pcTotal").innerHTML =
     "Computer Hand - Total: " + pcTotal;
 }
-
+//calling for new pc cards when the pcTotal is less than 16
 function getPcCards() {
   while (pcTotal < 16) {
     const newCard = drawCard();
@@ -103,7 +108,7 @@ function getPcCards() {
 
   reverseCard();
 }
-
+//endgame function that determines outcome of each round. Each outcome is attributed a result. With each result, there is an impact to bankValue, scoreboard, and celebratory sounds for victory.
 function gameOver() {
   document.querySelector(".hit").style.display = "none";
   document.querySelector(".stand").style.display = "none";
@@ -111,25 +116,59 @@ function gameOver() {
   banner.className = "banner";
   let result = "";
   if (playerTotal > 21) {
-    result = "you lost sry";
+    result = "you lost, try again";
+    bankValue = bankValue - betValue;
+    lossTotal = lossTotal + 1;
     reverseCard();
+    bankLog();
+    scoreboard();
+    youLose();
   } else {
     getPcCards();
     if (playerTotal === pcTotal) {
-      result = "wow a tie";
+      result = "wow, it's a tie";
+      bankValue = bankValue;
+      drawTotal = drawTotal + 1;
     } else if (playerTotal <= 21 && pcTotal > 21) {
-      result = "you won!!!";
+      result = "you won!";
+      bankValue = bankValue + betValue;
+      winTotal = winTotal + 1;
+      var snd = new Audio(
+        "https://cdn.glitch.me/4f9261b7-0055-4326-a688-34f54beaa7ea%2FCha_Ching_Register-Muska666-173262285.mp3?v=1638552471477"
+      ); // buffers automatically when created
+      snd.play();
     } else if (playerTotal === 21 && pcTotal < 21) {
-      result = "you won!!!";
+      result = "you won!";
+      bankValue = bankValue + betValue;
+      winTotal = winTotal + 1;
+      var snd = new Audio(
+        "https://cdn.glitch.me/4f9261b7-0055-4326-a688-34f54beaa7ea%2FCha_Ching_Register-Muska666-173262285.mp3?v=1638552471477"
+      ); // buffers automatically when created
+      snd.play();
     } else if (playerTotal < 21 && pcTotal === 21) {
-      result = "you lost, sry";
+      result = "you lost, try again";
+      bankValue = bankValue - betValue;
+      lossTotal = lossTotal + 1;
     } else if (playerTotal < 21 && pcTotal < 21) {
       if (playerTotal < pcTotal) {
-        result = "you lost sry";
+        result = "you lost, try again";
+        bankValue = bankValue - betValue;
+        lossTotal = lossTotal + 1;
       } else {
-        result = "you won!!!";
+        result = "you won!";
+        bankValue = bankValue + betValue;
+        winTotal = winTotal + 1;
+        var snd = new Audio(
+          "https://cdn.glitch.me/4f9261b7-0055-4326-a688-34f54beaa7ea%2FCha_Ching_Register-Muska666-173262285.mp3?v=1638552471477"
+        ); // buffers automatically when created
+        snd.play();
       }
     }
+
+    console.log(bankValue);
+    bankLog();
+    scoreboard();
+    youLose();
   }
 
   banner.innerHTML = result;
@@ -153,7 +192,7 @@ function gameOver() {
     setUpDeck();
   });
 }
-
+//dealing the initial setup for player and dealer
 function displayStartingCards() {
   const game = document.querySelector(".game");
 
@@ -214,13 +253,14 @@ function displayStartingCards() {
     if (playerTotal >= 21) {
       gameOver();
     }
+    strategy();
   });
 
   document.querySelector(".stand").addEventListener("click", function() {
     gameOver();
   });
 }
-
+//function that triggers the start of the new game and sets up values
 function startGame() {
   let newCard = drawCard();
   pcCards.push(newCard);
@@ -242,8 +282,9 @@ function startGame() {
   if (playerTotal == 21) {
     gameOver();
   }
+  strategy();
 }
-
+//builds the deck, creating an array with each card as an entry
 function setUpDeck(startValues) {
   deck = [
     { card: "A", value: 1, suit: "&diams;" },
@@ -309,7 +350,7 @@ function setUpDeck(startValues) {
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
 
-  // we want to move these to the front in the right order so that we draw them correctly
+  // ensuring a proper draw from the deck for each new card
   if (startValues) {
     let start = 0;
     for (let i = startValues.length - 1; i >= 0; i--) {
@@ -327,19 +368,71 @@ function setUpDeck(startValues) {
 
   startGame();
 }
-
+//function that triggers the start of the game, loading the game screen and dealing cards
 function hideStart() {
   let startValues;
   document.querySelector(".playBtn").addEventListener("click", function(evt) {
+    bet();
     startValues = document.querySelector("#startValues").value;
     document.querySelector(".start").style.display = "none";
     evt.preventDefault();
     setUpDeck(startValues);
   });
 }
-
+//calling the starting function
 function main() {
   hideStart();
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
+let bank, betValue, bankValue;
+let result = "";
+
+bank = 1000;
+bankValue = bank;
+console.log(bank);
+//logging the user input for the bet value
+function bet() {
+  betValue = parseInt(document.getElementById("startValues").value);
+  console.log(betValue);
+}
+//displaying the bankvalue in the hmtl span
+function bankLog() {
+  document.getElementById("bankValue").innerHTML = bankValue;
+}
+
+let wins, draws, losses;
+
+wins = 0;
+draws = 0;
+losses = 0;
+
+let winTotal, drawTotal, lossTotal;
+winTotal = wins;
+drawTotal = draws;
+lossTotal = losses;
+//displaying the wins/draws/losses on the scoreboard
+function scoreboard() {
+  document.getElementById("wins").innerHTML = winTotal;
+  document.getElementById("draws").innerHTML = drawTotal;
+  document.getElementById("losses").innerHTML = lossTotal;
+}
+//creating a basic recommended strategy
+function strategy() {
+  if (playerTotal >= 15) {
+    document.getElementById("strategy").innerHTML = "Stand";
+  } else if (playerTotal <= 14) {
+    document.getElementById("strategy").innerHTML = "Hit!";
+  }
+}
+
+function youLose() {
+  if (bankValue <= 0) {
+    document.getElementById("youLose").innerHTML =
+      "Out of Money! Refresh the page to restart the game.";
+    document.createElement("button");
+
+    onclick(window.reload);
+  }
+}

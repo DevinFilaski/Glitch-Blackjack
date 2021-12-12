@@ -1,30 +1,21 @@
-# Hello website!
+Let's Play Blackjack!
 
-This is a basic HTML starter project you can build on however you like. No need to save. While you develop your site, your changes will happen ✨ immediately in the preview window. On the left you'll see the files that make up your site, including HTML, JavaScript, and CSS. You can upload assets like images or audio in `assets`. The rest is up to you and your imagination. 🦄
+Hello, 
 
-## What's in this project?
+for our final project, we have created an enhanced blackjack game on glitch! Starting from a barebones, but functional blackjack code, we added features that improve the player experience and functionality of the game.
 
-← `README.md`: That's this file, where you can tell people what your cool website does and how you built it.
+Our features include:
+1. A functional betting system where you can decide what increments you wish to bet with from your starting bank of $1000
+2. A bank value tracker to help you keep an eye on your profits or losses
+3. A scoreboard to keep track of your Wins, Draws, and Losses
+4. A basic blackjack strategy recommendation for those new to the game
+5. A celebratory $Cha-Ching$ for when you cash in a victory
+6. An endgame message when you run out of money prompting you to restart
 
-← `index.html`: This is the main web page for your site. The HTML defines the structure and content of the page using _elements_. You'll see references in the HTML to the JS and CSS files. Try clicking the image in the center of the page!
+We faced my challanges along the way, many stemming from the original cluttered code and misleading variable names. But, we're very happy with the final product and hope you enjoy playing!
 
-← `style.css`: CSS files add styling rules to your content. The CSS applies styles to the elements in your HTML page. The style rules also make the image move when you click it.
+Let's Play Blackjack!
 
-← `script.js`: If you're feeling fancy you can add interactivity to your site with JavaScript. The code in the JavaScript file runs when the page loads, and when the visitor clicks the button you can add below.
+By: Ava, Devin, Joanne, & Vedin
 
-Open each file and check out the comments (in gray) for more info.
-
-## Try this next 🏗️
-
-Take a look in `TODO.md` for next steps you can try out in your new site!
-
-___Want a minimal version of this project to build your own website? Check out [Blank Website](https://glitch.com/edit/#!/remix/glitch-blank-website)!___
-
-![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
-
-## You built this with Glitch!
-
-[Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites.
-
-- Need more help? [Check out our Help Center](https://help.glitch.com/) for answers to any common questions.
-- Ready to make it official? [Become a paid Glitch member](https://glitch.com/pricing) to boost your app with private sharing, more storage and memory, domains and more.
+Our Video: https://www.youtube.com/watch?v=6OalPJ5uW9k 
